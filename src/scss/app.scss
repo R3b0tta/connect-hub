@@ -1,0 +1,596 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #F2E3D0;
+  font-family: 'Fugaz One', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+body.menu-open {
+  background-color: rgba(18, 18, 18, 0.9);
+}
+
+/* Стили для страниц */
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Стили для шапки */
+.header {
+  position: absolute;
+  top: 20px;
+  left: 200px;
+  right: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 126px);
+}
+
+/* Иконка меню */
+.menu-icon {
+  width: 50px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: flex-end;
+  position: absolute;
+  top: 10px;
+  right: 270px;
+}
+
+.menu-icon .line {
+  width: 50px;
+  height: 6px;
+  background-color: #F2E3D0;
+  margin: 1px 0;
+}
+
+
+/* Кнопки в меню */
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.contact-button {
+  font-size: 22px;
+  font-family: 'Albert Sans', sans-serif;
+  background-color: #01C847;
+  color: #121212;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  width: 80%;
+  text-align: center;
+}
+
+.contact-button:hover {
+  background-color: rgba(1, 200, 71, 0.7);
+}
+
+/* Контент первой страницы */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  margin-top: -40px;
+  margin-left: -600px; /* Сдвиг влево */
+}
+
+.center-text {
+  text-align: left;
+  width: 915px;
+  height: 205px;
+  font-size: 80px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.text-main {
+  color: #F2E3D0;
+}
+
+.text-highlight {
+  color: #01C847;
+  margin-top: -50px;
+}
+
+.flip-text {
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 80px;
+  text-align: left;
+  margin-top: -103px;
+  margin-left: 440px;
+  white-space: nowrap; /* Добавлено */
+}
+
+/* Кнопка "Стать партнером" */
+.partner-button {
+  width: 395px;
+  height: 95px;
+  background-color: #01C847;
+  color: #121212;
+  font-size: 24px;
+  font-family: 'Fugaz One', sans-serif;
+  border: none;
+  border-radius: 47.5px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-left: 1px; /* Сдвиг влево */
+}
+
+.partner-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(1, 200, 71, 0.7);
+  font-size: 30px;
+}
+
+/* Стили для второй страницы */
+#page-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #121212;
+  padding: 50px 100px;
+  text-align: center; /* Добавлено */
+}
+
+/* Контейнер для текста CPA */
+.cpa-container {
+  width: 45%;
+  color: #F2E3D0;
+  font-family: 'Albert Sans', sans-serif;
+  text-align: left;
+  margin-left: 100px;
+}
+
+.cpa-container h2 {
+  font-size: 48px;
+  color: #F2E3D0;
+}
+
+.cpa-container h2 .cpa-bold {
+  font-family: 'Baloo Chettan 2', cursive;
+  font-weight: bold;
+  font-size: 60px;
+  color: #01C847; /* Добавлено */
+}
+
+.cpa-container p {
+  font-size: 28px;
+  line-height: 1.5;
+  color: #F2E3D0; /* Добавлено */
+}
+
+.cpa-container p .highlight {
+  color: #01C847;
+}
+
+/* Контейнер для калькулятора */
+.calculator-container {
+  width: 45%;
+  color: #F2E3D0;
+  font-family: 'Albert Sans', sans-serif;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.calculator-container h2 {
+  font-size: 48px;
+  color: #01C847;
+  margin-bottom: 20px;
+}
+
+/* Слайдер калькулятора */
+.slider-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slider-container label {
+  font-size: 24px;
+}
+
+.slider-container input[type="range"] {
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  background: #F5F5F5;
+  accent-color: #FFFE00;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+  background: #FFD700;
+  width: 20px;
+  height: 20px;
+}
+
+.slider-container span {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+/* Контейнер для отображения дохода */
+.income-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.income-container img {
+  width: 150px;
+  height: auto;
+}
+
+.income-container p {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+#income-result {
+  font-size: 36px;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* Третья страница */
+#page-3 {
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  position: relative;
+}
+
+/* Центральный текст сверху */
+.center-top-text {
+  text-align: center;
+  margin-bottom: 100px; /* Отступ снизу */
+  margin-top: -50px; /* Поднять выше */
+}
+
+.center-top-text h2 {
+  font-size: 60px; /* Увеличенный размер текста */
+  color: #F2E3D0;
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+.center-top-text p {
+  font-size: 50px; /* Уменьшенный размер текста */
+  color: #F2E3D0;
+  margin-top: -20px; /* Поднять выше */
+}
+
+/* Контейнер для колонок */
+.columns-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%; /* Ширина контейнера */
+  margin-bottom: 150px; /* Отступ снизу */
+}
+
+/* Колонки */
+.column {
+  width: 40%; /* Ширина колонки */
+  text-align: center;
+}
+
+.column h3 {
+  font-size: 35px; /* Размер заголовка */
+  color: #01C847;
+  margin-bottom: 40px; /* Отступ снизу */
+}
+
+.column p {
+  font-size: 24px; /* Размер текста */
+  color: #F2E3D0;
+  line-height: 1.2; /* Межстрочный интервал */
+}
+
+/* Изображение внизу */
+.bottom-image {
+  text-align: center;
+  margin-bottom: -180px; /* Отступ снизу */
+  position: relative;
+  z-index: 1; /* Чтобы изображение было поверх кругов */
+}
+
+.bottom-image img {
+  width: 200px; /* Ширина изображения */
+  height: auto;
+}
+
+/* Круги внизу */
+.bottom-circles {
+  position: absolute;
+  bottom: -150px; /* Поднять круги выше */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 0; /* Чтобы круги были под изображением */
+}
+
+.circle {
+  width: 400px; /* Ширина круга */
+  height: 400px; /* Высота круга */
+  background-color: #F2E3D0;
+  border-radius: 50%;
+}
+
+.circle.left {
+  margin-left: -200px; /* Сдвиг влево */
+}
+
+.circle.right {
+  margin-right: -200px; /* Сдвиг вправо */
+}
+
+/* Четвертая страница */
+#page-4 {
+  background-color: #F2E3D0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px; /* Увеличенный отступ */
+}
+
+#page-4 .center-top-text h2 {
+  color: #01C847; /* Зеленый цвет */
+  font-size: 60px; /* Увеличенный размер текста */
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold; /* Жирный шрифт */
+  font-style: normal; /* Убираем курсив */
+}
+
+#page-4 .center-top-text h2 .cpa-text {
+  font-family: 'Baloo Chettan 2', cursive; /* Шрифт Baloo Chettan для CPA */
+}
+
+#page-4 .center-top-text p {
+  color: #121212;
+  font-size: 30px; /* Увеличенный размер текста */
+  text-align: center;
+  margin-bottom: -10px; /* Уменьшенный отступ */
+  font-weight: bold; /* Весь текст жирным */
+}
+
+#page-4 .center-top-text p .cpa-text {
+  font-family: 'Baloo Chettan 2', cursive; /* Шрифт Baloo Chettan для CPA */
+}
+
+#page-4 .center-top-text .second-line {
+  margin-top: 20px; /* Отступ для второй строки */
+}
+
+.why-we {
+  text-align: center;
+  margin: -40px 10px; /* Отступы сверху и снизу */
+}
+
+.why-we h3 {
+  font-size: 35px; /* Уменьшенный размер текста */
+  color: #01C847;
+  margin-bottom: 20px;
+  font-weight: bold; /* Жирный шрифт */
+}
+
+.why-we h3 .soft-sign {
+  font-weight: normal; /* Вопросительный знак нежирным */
+  font-style: normal; /* Убираем курсив */
+}
+
+.why-we p {
+  font-size: 30px;
+  color: #121212;
+  margin-bottom: 10px;
+  line-height: 1.5; /* Межстрочный интервал */
+  text-align: center; /* Выравнивание по центру */
+}
+
+.why-we p strong {
+  font-weight: bold; /* Жирный шрифт для выделенных частей */
+}
+
+.why-we p .non-bold {
+  font-weight: normal; /* 24/7 не жирным */
+}
+
+.why-we p br {
+  display: block; /* Перенос строки */
+  content: "";
+  margin-top: 10px; /* Отступ между строками */
+}
+
+.bottom-images {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: -80px; /* Уменьшенный отступ сверху */
+}
+
+/* Стили для левой картинки */
+.bottom-images .left-image {
+  width: 380px; /* Ширина левой картинки */
+  height: 320px; /* Высота левой картинки */
+}
+
+/* Стили для правой картинки */
+.bottom-images .right-image {
+  width: 250px; /* Ширина правой картинки */
+  height: 300px; /* Высота правой картинки */
+}
+
+/* Пятая страница */
+#page-5 {
+  background-color: #F2E3D0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.faq-container {
+  display: flex;
+  width: 100%;
+  max-width: 1700px;
+  gap: 250px;
+}
+
+.faq-title {
+  width: 40%;
+  font-size: 44px;
+  color: #121212;
+  font-family: 'Fugaz One', sans-serif;
+}
+
+.faq-questions {
+  width: 100%;
+}
+
+.faq-item {
+  margin-bottom: 25px;
+  border-bottom: 4px solid #01C847;
+}
+
+.faq-question {
+  font-size: 40px;
+  color: #121212;
+  font-family: 'Albert Sans', sans-serif;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: color 0.3s;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question .arrow {
+  font-size: 40px;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  font-size: 25px;
+  color: #121212;
+  font-family: 'Albert Sans', sans-serif;
+  padding: 10px 0;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease; /* Более плавная анимация */
+}
+
+.faq-answer.active {
+  opacity: 1;
+  height: auto;
+}
+/* Стиль для навигационного меню */
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background-color: #F2E3D0;
+  color: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(100%); /* Меню начинается за пределами экрана справа */
+  transition: transform 0.6s ease-in-out; /* Плавная анимация */
+  z-index: 999;
+}
+
+/* Когда меню открыто, оно плавно выезжает */
+.nav-menu.visible {
+  transform: translateX(0); /* Меню появляется */
+}
+
+.menu-open {
+  overflow: hidden; /* Отключаем прокрутку страницы, когда меню открыто */
+}
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-button {
+  padding: 10px 20px;
+  color: white;
+  background-color: #01C847;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.contact-button:hover {
+  background-color: #00a234;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  gap: 10px;
+  transform: scale(1.6);
+  margin: 10px;
+}
+
+/* Иконка меню */
+.menu-icon {
+  width: 35px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-icon .line {
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* Для body, когда меню открыто */
+.menu-open .nav-menu {
+  transform: translateX(0); /* Когда тело содержит класс menu-open, меню открыто */
+}

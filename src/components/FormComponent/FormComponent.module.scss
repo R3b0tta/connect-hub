@@ -1,0 +1,181 @@
+  .root {
+      width: 550px;
+      background-color: #F2E3D0;
+      border-radius: 83px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 10px;
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+    }
+  }
+
+    .inputGroup {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+
+    .inputField {
+      width: 95%;  /* Уменьшаем длину поля ввода до 95% */
+      padding: 15px;
+      border-radius: 31.5px;
+      border: 1px solid #848D87;
+      margin-top: 10px;
+      background-color: #F2E3D0;  /* Цвет фона внутри поля */
+      color: black;
+      font-size: 18px;
+    }
+
+    .roleSelector {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #848D87;
+      border-radius: 31.5px;
+      padding: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .roleOption {
+      flex: 1;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 31.5px;
+      transition: transform 0.3s;
+      color: black;
+    }
+
+    .roleOption.active {
+      background-color: #01C847;
+      color: white;
+    }
+
+    .roleOption:hover {
+      transform: scale(1.1);
+    }
+
+    .roleOption.active:hover {
+      background-color: #019c3f;
+    }
+
+    .separator {
+      width: 1px;
+      height: 100%;
+      background-color: #848D87;
+    }
+
+    /* Кнопка отправки */
+    .submitButton {
+      width: 100%;
+      height: 50px;
+      background-color: #01C847;
+      border-radius: 31.5px;
+      font-size: 22px;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+      margin: 0 auto;
+      color: black;
+      transition: transform 0.3s, font-size 0.3s;
+    }
+
+    .submitButton:hover {
+      transform: translateY(-5px);
+      font-size: 24px;
+    }
+
+    .inputGroup a {
+      color: #01C847;
+      text-decoration: none;
+    }
+
+    .inputGroup a:hover {
+      text-decoration: underline;
+    }
+
+    /* Для чекбоксов */
+    .checkboxContainer {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+      position: relative;
+      width: 100%;
+    }
+
+    .checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #848D87;
+      border-radius: 5px;
+      position: absolute;
+      left: 0;
+      cursor: pointer;
+    }
+
+    .checkbox.checked {
+      background-color: #01C847;
+      border-color: #01C847;
+    }
+
+    .checkbox.checked::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 6px;
+      height: 12px;
+      border: solid black;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    .consentText {
+      font-size: 18px;
+      color: black;
+      line-height: 25px;
+      margin-left: 0;
+      white-space: nowrap;
+    }
+
+    .consentSection {
+      display: flex;
+      flex-direction: column;
+      margin-top: 12px;
+    }
+
+    .consentSection .checkboxContainer {
+      margin-top: 5px;
+      flex-direction: row-reverse;
+    }
+
+    /* Сдвиг текста */
+    .consentTextRight {
+      transform: translateX(-7px); /* Сдвиг правее */
+    }
+
+    .consentTextLeft {
+      transform: translateX(-30px); /* Сдвиг текста "Я даю свое согласие на обработку персональных данных" левее */
+    }
+
+    /* Стили для ошибок */
+    .error {
+      border: 1px solid red;
+    }
+
+    .errorMessage {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
