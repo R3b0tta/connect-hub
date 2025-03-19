@@ -41,20 +41,6 @@ export const MainHeader: React.FC = () => {
 
     return () => clearInterval(intervalId);
   }, [menuVisible]);
-  // Анимация появления FAQ
-  useEffect(() => {
-    gsap.from(".faq-item", {
-      opacity: 0,
-      y: 50,
-      stagger: 0.2,
-      duration: 1,
-      scrollTrigger: {
-        trigger: "#page-5",
-        start: "top center",
-        toggleActions: "play none none none",
-      },
-    });
-  }, []);
 
   return (
     <div className="page" id="page-1">

@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import goldMug from "../assets/images/goldMug.png";
+import { gsap } from "gsap";
 
 export const WhatIsCpaComponent = () => {
+  const [clients, setClients] = useState(0);
+  const income = clients * 3352;
+
+  useEffect(() => {
+    if (clients >= 900) {
+      gsap.to(".calculator-container", {
+        scale: 1.1,
+        y: -20,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+      gsap.to("#income-result", {
+        color: "#FF4500",
+        fontSize: "48px",
+        duration: 0.5,
+      });
+    } else {
+      gsap.to(".calculator-container", {
+        scale: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+      gsap.to("#income-result", {
+        color: "#FFD700",
+        fontSize: "36px",
+        duration: 0.5,
+      });
+    }
+  }, [clients]);
+
   return (
     <div className="page" id="page-2">
       <div className="cpa-container">
@@ -27,15 +59,16 @@ export const WhatIsCpaComponent = () => {
             name="clients"
             min="0"
             max="1000"
-            value="0"
+            value={clients}
             step="10"
+            onChange={(e) => setClients(parseInt(e.target.value))}
           />
-          <span id="clients-value">0</span>
+          <span id="clients-value">{clients}</span>
         </div>
         <div className="income-container">
-          <img src={goldMug} alt="Gay Image" />
+          <img src={goldMug} alt="Gold Mug" />
           <p>Ваш доход</p>
-          <p id="income-result">0 ₽</p>
+          <p id="income-result">{income.toLocaleString()} ₽</p>
         </div>
       </div>
     </div>

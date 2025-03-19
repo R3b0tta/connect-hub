@@ -27,6 +27,9 @@ body.menu-open {
   position: relative;
   overflow: hidden;
 }
+#page-2 {
+  margin-right: 50px;
+}
 
 /* Стили для шапки */
 .header {
@@ -593,4 +596,7 @@ body.menu-open {
 /* Для body, когда меню открыто */
 .menu-open .nav-menu {
   transform: translateX(0); /* Когда тело содержит класс menu-open, меню открыто */
+}
+#page-5 {
+  margin-left: 50px;
 }
