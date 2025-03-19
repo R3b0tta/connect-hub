@@ -9,57 +9,78 @@ import coins from "../../assets/images/coins.png";
 export const Footer = () => {
   return (
     <>
+      {/* Секция "Как начать работать" */}
       <div className="page" id="page-6">
         <div className={styles.upper}>
+          {/* Левый блок с шагами */}
           <div className={styles.upper__left}>
-            <div className={styles.upper__leftItem}>
-              <img src={clever} alt="4clever" />
-              <p>
-                1. Зарегистрируйтесь <br />
-                После регистрации вы получите доступ к 200+
-                <br />
-                офферам в различных нишах. Это ваш первый шаг к началу
-                заработка.
-              </p>
-            </div>
-            <div className={styles.upper__leftItem}>
-              <img src={choice} alt="choice" />
-              <p>
-                2. Выберите оффер <br /> Подберите подходящее предложение из
-                нашего каталога. <br /> Мы предлагаем офферы для разных
-                аудиторий и интересов.
-              </p>
-            </div>
-            <div className={styles.upper__leftItem}>
-              <img src={greenArrow} alt="greenArrow" />
-              <p>
-                3. Запустите трафик <br /> Начинайте привлекать пользователей на
-                офферы. Чем больше целевых действий <br /> (покупок, заявок,
-                регистраций) выполнит ваша аудитория, тем выше ваш доход.
-              </p>
-            </div>
-            <div className={styles.upper__leftItem}>
-              <img src={coins} alt="coins" />
-              <p>
-                4. Зарабатывайте <br /> Получайте вознаграждение за каждое
-                действие ваших пользователей. <br /> Выводите заработанные
-                деньги удобным для вас способом — быстро и без лишних
-                сложностей.
-              </p>
-            </div>
+            {[
+              {
+                icon: clever,
+                text: (
+                  <>
+                    1. Зарегистрируйтесь <br />
+                    После регистрации вы получите доступ к 200+ офферам в
+                    различных нишах. Это ваш первый шаг к началу заработка.
+                  </>
+                ),
+              },
+              {
+                icon: choice,
+                text: (
+                  <>
+                    2. Выберите оффер <br />
+                    Подберите подходящее предложение из нашего каталога. Мы
+                    предлагаем офферы для разных аудиторий и интересов.
+                  </>
+                ),
+              },
+              {
+                icon: greenArrow,
+                text: (
+                  <>
+                    3. Запустите трафик <br />
+                    Начинайте привлекать пользователей на офферы. Чем больше
+                    целевых действий (покупок, заявок, регистраций) выполнит
+                    ваша аудитория, тем выше ваш доход.
+                  </>
+                ),
+              },
+              {
+                icon: coins,
+                text: (
+                  <>
+                    4. Зарабатывайте <br />
+                    Получайте вознаграждение за каждое действие ваших
+                    пользователей. Выводите заработанные деньги удобным для вас
+                    способом — быстро и без лишних сложностей.
+                  </>
+                ),
+              },
+            ].map((item, index) => (
+              <div key={index} className={styles.upper__leftItem}>
+                <img src={item.icon} alt={`Step ${index + 1}`} />
+                <p>{item.text}</p>
+              </div>
+            ))}
           </div>
+
+          {/* Правая кнопка "Стать партнером" */}
           <div className={styles.upper__right}>
-            <Link to="/form">
-              <button className={styles.upper__rightButton}>
-                Стать партнером
-              </button>
+            <Link className={styles.upper__rightButton} to="/form">
+              Стать партнером
             </Link>
           </div>
         </div>
       </div>
-      <div className={styles.footer} id="page-7">
+
+      {/* Секция футера */}
+      <div className="page" id="page-7">
         <div className={styles.footer}>
+          {/* Логотип */}
           <div className={styles.footer__logo}>Connect-Hub</div>
+
+          {/* Контакты */}
           <div className={styles.footer__contacts}>
             <div className={styles.footer__contactsTitle}>Контакты</div>
             <div className={styles.footer__contactsItem}>
@@ -70,9 +91,11 @@ export const Footer = () => {
               Ваши предложения: Info@connect-hub.ru
             </div>
             <div className={styles.footer__contactsItem}>
-              Telegram: @partner_connect_hub x{" "}
+              Telegram: @partner_connect_hub
             </div>
           </div>
+
+          {/* Навигация */}
           <div className={styles.footer__nav}>
             <div className={styles.footer__navTitle}>Навигация</div>
             <div className={styles.footer__navItem}>

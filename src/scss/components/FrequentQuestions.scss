@@ -1,0 +1,140 @@
+/* Пятая страница */
+#page-5 {
+  background-color: #F2E3D0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  min-height: 130vh; /* Минимальная высота для растягивания */
+  box-sizing: border-box; /* Учитываем padding в высоте */
+}
+
+.faq-container {
+  display: flex;
+  width: 100%;
+  max-width: 1700px;
+  gap: 250px;
+}
+
+.faq-title {
+  width: 40%;
+  font-size: 44px;
+  color: #121212;
+  font-family: 'Fugaz One', sans-serif;
+}
+
+.faq-questions {
+  width: 100%;
+}
+
+.faq-item {
+  margin-bottom: 25px;
+  border-bottom: 4px solid #01C847;
+}
+
+.faq-question {
+  font-size: 40px;
+  color: #121212;
+  font-family: 'Albert Sans', sans-serif;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: color 0.3s;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question .arrow {
+  font-size: 40px;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  font-size: 25px;
+  color: #121212;
+  font-family: 'Albert Sans', sans-serif;
+  padding: 10px 0;
+  opacity: 0;
+  max-height: 0; /* Используем max-height вместо height */
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease; /* Анимация max-height */
+}
+
+.faq-answer.active {
+  opacity: 1;
+  max-height: 500px; /* Максимальная высота для анимации */
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  .faq-container {
+    gap: 100px;
+  }
+
+  .faq-title {
+    font-size: 36px;
+  }
+
+  .faq-question {
+    font-size: 32px;
+  }
+
+  .faq-question .arrow {
+    font-size: 32px;
+  }
+
+  .faq-answer {
+    font-size: 20px;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  #page-5 {
+    padding: 30px;
+  }
+
+  .faq-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .faq-title {
+    width: 100%;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .faq-question {
+    font-size: 28px;
+  }
+
+  .faq-question .arrow {
+    font-size: 28px;
+  }
+
+  .faq-answer {
+    font-size: 18px;
+  }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 480px) {
+  .faq-title {
+    font-size: 28px;
+  }
+
+  .faq-question {
+    font-size: 24px;
+  }
+
+  .faq-question .arrow {
+    font-size: 24px;
+  }
+
+  .faq-answer {
+    font-size: 16px;
+  }
+}

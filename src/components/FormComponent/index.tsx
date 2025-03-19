@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React from "react";
+import { useForm as useReactHookForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useForm as useFormspree, ValidationError } from "@formspree/react";
 import styles from "./FormComponent.module.scss";
 
-// Создаем схему Zod для валидации
+// Схема валидации через Zod
 const schema = z.object({
   role: z.enum(["webmaster", "partner"], {
     errorMap: () => ({ message: "Выберите роль" }),
@@ -18,10 +19,7 @@ const schema = z.object({
     .string()
     .regex(/^\+?\d+$/, "Телефон может содержать только цифры и знак +"),
   telegram: z.string().regex(/^[A-Za-z0-9_]+$/, "Только латиница и цифры"),
-  business: z
-    .string()
-    .min(1, "Укажите сферу бизнеса")
-    .regex(/^[А-Яа-яЁё\s]+$/, "Только кириллица"),
+  business: z.string().min(1, "Укажите сферу бизнеса"),
   website: z.string().url("Некорректная ссылка"),
   consent1: z
     .boolean()
@@ -41,157 +39,173 @@ export const FormComponent = () => {
     formState: { errors },
     setValue,
     watch,
-  } = useForm({
+  } = useReactHookForm({
     resolver: zodResolver(schema),
-    defaultValues: { role: "webmaster" }, // Устанавливаем роль по умолчанию как 'webmaster'
+    defaultValues: { role: "webmaster" },
   });
 
-  // Следим за текущим значением роли
+  // Используем useForm из Formspree
+  const [state, formspreeSubmit] = useFormspree("movejdbp");
+
+  // Следим за текущей выбранной ролью
   const selectedRole = watch("role");
 
   // Обработчик отправки формы
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
-
-  // Обработчик выбора роли
-  const handleRoleChange = (role: "webmaster" | "partner") => {
-    setValue("role", role);
+  const onSubmit = async (data: any) => {
+    await formspreeSubmit(data);
   };
 
   return (
     <div className={styles.root}>
       <h1>Обратная форма</h1>
 
-      <div className={styles.inputGroup}>
-        <div className={styles.roleSelector}>
-          <div
-            className={`${styles.roleOption} ${selectedRole === "webmaster" ? styles.active : ""}`}
-            onClick={() => handleRoleChange("webmaster")}
-          >
-            Вебмастер
+      {state.succeeded && (
+        <p className={styles.successMessage}>Спасибо за отправку!</p>
+      )}
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Выбор роли */}
+        <div className={styles.inputGroup}>
+          <div className={styles.roleSelector}>
+            <div
+              className={`${styles.roleOption} ${selectedRole === "webmaster" ? styles.active : ""}`}
+              onClick={() => setValue("role", "webmaster")}
+            >
+              Вебмастер
+            </div>
+            <div className={styles.separator}></div>
+            <div
+              className={`${styles.roleOption} ${selectedRole === "partner" ? styles.active : ""}`}
+              onClick={() => setValue("role", "partner")}
+            >
+              Партнер
+            </div>
           </div>
-          <div className={styles.separator}></div>
-          <div
-            className={`${styles.roleOption} ${selectedRole === "partner" ? styles.active : ""}`}
-            onClick={() => handleRoleChange("partner")}
-          >
-            Партнер
+          {errors.role && (
+            <div className={styles.errorMessage}>{errors.role.message}</div>
+          )}
+        </div>
+
+        {/* Поля формы */}
+        <div className={styles.inputGroup}>
+          <input
+            type="text"
+            {...register("name")}
+            className={styles.inputField}
+            placeholder="Имя"
+          />
+          {errors.name && (
+            <div className={styles.errorMessage}>{errors.name.message}</div>
+          )}
+        </div>
+
+        <div className={styles.inputGroup}>
+          <input
+            type="email"
+            {...register("email")}
+            className={styles.inputField}
+            placeholder="E-mail"
+          />
+          <ValidationError prefix="Email" field="email" errors={state.errors} />
+          {errors.email && (
+            <div className={styles.errorMessage}>{errors.email.message}</div>
+          )}
+        </div>
+
+        <div className={styles.inputGroup}>
+          <input
+            type="tel"
+            {...register("phone")}
+            className={styles.inputField}
+            placeholder="Номер телефона"
+          />
+          {errors.phone && (
+            <div className={styles.errorMessage}>{errors.phone.message}</div>
+          )}
+        </div>
+
+        <div className={styles.inputGroup}>
+          <input
+            type="text"
+            {...register("telegram")}
+            className={styles.inputField}
+            placeholder="Telegram"
+          />
+          {errors.telegram && (
+            <div className={styles.errorMessage}>{errors.telegram.message}</div>
+          )}
+        </div>
+
+        <div className={styles.inputGroup}>
+          <input
+            type="text"
+            {...register("business")}
+            className={styles.inputField}
+            placeholder="В какой сфере ваш бизнес?"
+          />
+          {errors.business && (
+            <div className={styles.errorMessage}>{errors.business.message}</div>
+          )}
+        </div>
+
+        <div className={styles.inputGroup}>
+          <input
+            type="url"
+            {...register("website")}
+            className={styles.inputField}
+            placeholder="Ссылка на ваш сайт"
+          />
+          {errors.website && (
+            <div className={styles.errorMessage}>{errors.website.message}</div>
+          )}
+        </div>
+
+        {/* Чекбоксы */}
+        <div className={styles.consentSection}>
+          <div className={styles.checkboxContainer}>
+            <input
+              type="checkbox"
+              {...register("consent1")}
+              id="consent1"
+              className={styles.checkbox}
+            />
+            <label
+              htmlFor="consent1"
+              className={`${styles.consentText} ${styles.longText}`}
+            >
+              Я даю свое согласие на получение персональных рассылок <br /> с
+              помощью SMS и email
+            </label>
           </div>
-        </div>
-        {errors.role && (
-          <div className={styles.errorMessage}>{errors.role.message}</div>
-        )}
-      </div>
+          {errors.consent1 && (
+            <div className={styles.errorMessage}>{errors.consent1.message}</div>
+          )}
 
-      <div className={styles.inputGroup}>
-        <input
-          type="text"
-          {...register("name")}
-          className={styles.inputField}
-          placeholder="Имя"
-        />
-        {errors.name && (
-          <div className={styles.errorMessage}>{errors.name.message}</div>
-        )}
-      </div>
-
-      <div className={styles.inputGroup}>
-        <input
-          type="email"
-          {...register("email")}
-          className={styles.inputField}
-          placeholder="E-mail"
-        />
-        {errors.email && (
-          <div className={styles.errorMessage}>{errors.email.message}</div>
-        )}
-      </div>
-
-      <div className={styles.inputGroup}>
-        <input
-          type="tel"
-          {...register("phone")}
-          className={styles.inputField}
-          placeholder="Номер телефона"
-        />
-        {errors.phone && (
-          <div className={styles.errorMessage}>{errors.phone.message}</div>
-        )}
-      </div>
-
-      <div className={styles.inputGroup}>
-        <input
-          type="text"
-          {...register("telegram")}
-          className={styles.inputField}
-          placeholder="Telegram"
-        />
-        {errors.telegram && (
-          <div className={styles.errorMessage}>{errors.telegram.message}</div>
-        )}
-      </div>
-
-      <div className={styles.inputGroup}>
-        <input
-          type="text"
-          {...register("business")}
-          className={styles.inputField}
-          placeholder="В какой сфере ваш бизнес?"
-        />
-        {errors.business && (
-          <div className={styles.errorMessage}>{errors.business.message}</div>
-        )}
-      </div>
-
-      <div className={styles.inputGroup}>
-        <input
-          type="url"
-          {...register("website")}
-          className={styles.inputField}
-          placeholder="Ссылка на ваш сайт"
-        />
-        {errors.website && (
-          <div className={styles.errorMessage}>{errors.website.message}</div>
-        )}
-      </div>
-
-      <div className={styles.consentSection}>
-        <div className={styles.checkboxContainer}>
-          <input
-            type="checkbox"
-            {...register("consent1")}
-            id="consent1"
-            className={styles.checkbox}
-          />
-          <label
-            htmlFor="consent1"
-            className={`${styles.consentText} ${styles.consentTextRight} ${styles.longText}`}
-          >
-            Я даю свое согласие на получение персональных рассылок <br /> с
-            помощью SMS и email
-          </label>
+          <div className={styles.checkboxContainer}>
+            <input
+              type="checkbox"
+              {...register("consent2")}
+              id="consent2"
+              className={styles.checkbox}
+            />
+            <label htmlFor="consent2" className={styles.consentText}>
+              Я даю свое согласие на обработку персональных данных
+            </label>
+          </div>
+          {errors.consent2 && (
+            <div className={styles.errorMessage}>{errors.consent2.message}</div>
+          )}
         </div>
 
-        <div className={styles.checkboxContainer}>
-          <input
-            type="checkbox"
-            {...register("consent2")}
-            id="consent2"
-            className={styles.checkbox}
-          />
-          <label
-            htmlFor="consent2"
-            className={`${styles.consentText} ${styles.consentTextLeft}`}
-          >
-            Я даю свое согласие на обработку персональных данных
-          </label>
-        </div>
-      </div>
-
-      <div className={styles.submitButton} onClick={handleSubmit(onSubmit)}>
-        Оставить заявку
-      </div>
+        {/* Кнопка отправки */}
+        <button
+          type="submit"
+          className={styles.submitButton}
+          disabled={state.submitting}
+        >
+          Оставить заявку
+        </button>
+      </form>
     </div>
   );
 };

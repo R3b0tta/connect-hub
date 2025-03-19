@@ -1,0 +1,241 @@
+#page-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 100px;
+  text-align: center;
+  background-color: #121212;
+}
+
+/* Контейнер для текста CPA */
+.cpa-container {
+  width: 45%;
+  color: #F2E3D0;
+  font-family: 'Albert Sans', sans-serif;
+  text-align: left;
+  margin-left: 100px;
+}
+
+.cpa-container h2 {
+  font-size: 48px;
+  color: #F2E3D0;
+}
+
+.cpa-container h2 .cpa-bold {
+  font-family: 'Baloo Chettan 2', cursive;
+  font-weight: bold;
+  font-size: 60px;
+  color: #01C847;
+}
+
+.cpa-container p {
+  font-size: 28px;
+  line-height: 1.5;
+  color: #F2E3D0;
+}
+
+.cpa-container p .highlight {
+  color: #01C847;
+}
+
+/* Контейнер для калькулятора */
+.calculator-container {
+  width: 45%;
+  color: #F2E3D0;
+  font-family: 'Albert Sans', sans-serif;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.calculator-container h2 {
+  font-size: 48px;
+  color: #01C847;
+  margin-bottom: 20px;
+}
+
+/* Слайдер калькулятора */
+.slider-container {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.slider-container label {
+  font-size: 24px;
+}
+
+.slider-container input[type="range"] {
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  background: #F5F5F5;
+  accent-color: #FFFE00;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+  background: #FFD700;
+  width: 20px;
+  height: 20px;
+}
+
+.slider-container span {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+/* Контейнер для отображения дохода */
+.income-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.income-container img {
+  width: 150px;
+  height: auto;
+}
+
+.income-container p {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+#income-result {
+  font-size: 36px;
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+  #page-2 {
+    padding: 50px;
+  }
+
+  .cpa-container {
+    margin-left: 50px;
+  }
+
+  .cpa-container h2 {
+    font-size: 40px;
+  }
+
+  .cpa-container h2 .cpa-bold {
+    font-size: 50px;
+  }
+
+  .cpa-container p {
+    font-size: 24px;
+  }
+
+  .calculator-container h2 {
+    font-size: 40px;
+  }
+
+  .slider-container label {
+    font-size: 20px;
+  }
+
+  .slider-container span {
+    font-size: 20px;
+  }
+
+  .income-container p {
+    font-size: 20px;
+  }
+
+  #income-result {
+    font-size: 30px;
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  #page-2 {
+    flex-direction: column;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .cpa-container {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .cpa-container h2 {
+    font-size: 36px;
+  }
+
+  .cpa-container h2 .cpa-bold {
+    font-size: 42px;
+  }
+
+  .cpa-container p {
+    font-size: 20px;
+  }
+
+  .calculator-container {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .calculator-container h2 {
+    font-size: 36px;
+  }
+
+  .slider-container label {
+    font-size: 18px;
+  }
+
+  .slider-container span {
+    font-size: 18px;
+  }
+
+  .income-container p {
+    font-size: 18px;
+  }
+
+  #income-result {
+    font-size: 28px;
+  }
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 480px) {
+  #page-2 {
+    padding: 20px 10px;
+  }
+
+  .cpa-container h2 {
+    font-size: 28px;
+  }
+
+  .cpa-container h2 .cpa-bold {
+    font-size: 32px;
+  }
+
+  .cpa-container p {
+    font-size: 16px;
+  }
+
+  .calculator-container h2 {
+    font-size: 28px;
+  }
+
+  .slider-container label {
+    font-size: 16px;
+  }
+
+  .slider-container span {
+    font-size: 16px;
+  }
+
+  .income-container p {
+    font-size: 16px;
+  }
+
+  #income-result {
+    font-size: 24px;
+  }
+}
