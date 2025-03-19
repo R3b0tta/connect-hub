@@ -4,6 +4,7 @@ import { WhatIsCpaComponent } from "../components/WhatIsCpaComponent";
 import { Blog } from "../components/Blog";
 import { WhyWeComponent } from "../components/WhyWeComponent";
 import { FrequentQuestionsComponent } from "../components/FrequentQuestionsComponent";
+import { Footer } from "../components/Footer";
 
 export const Home: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const Home: React.FC = () => {
       <Blog />
       <WhyWeComponent />
       <FrequentQuestionsComponent />
+      <Footer />
     </>
   );
 };
