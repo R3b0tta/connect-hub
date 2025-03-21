@@ -21,6 +21,11 @@
 }
 .connect-hub {
   margin-left: 10px;
+  color: #F2E3D0;
+  h1 {
+    color: #F2E3D0 !important;
+
+  }
 }
 
 
@@ -118,21 +123,23 @@
   font-size: 30px;
 }
 /* Стиль для навигационного меню */
+/* Основные стили для меню */
 .nav-menu {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 0; /* Меню выезжает справа */
   width: 400px;
   height: 100vh;
   background-color: #F2E3D0;
   color: #121212;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Выравниваем содержимое по левой стороне */
   justify-content: center;
   transform: translateX(100%); /* Меню начинается за пределами экрана справа */
   transition: transform 0.6s ease-in-out; /* Плавная анимация */
   z-index: 999;
+  padding: 20px; /* Добавляем отступы */
 }
 
 /* Когда меню открыто, оно плавно выезжает */
@@ -140,15 +147,53 @@
   transform: translateX(0); /* Меню появляется */
 }
 
+/* Отключаем прокрутку страницы, когда меню открыто */
 .menu-open {
-  overflow: hidden; /* Отключаем прокрутку страницы, когда меню открыто */
+  overflow: hidden;
 }
+
+/* Стили для контейнера ссылок */
 .contact-buttons {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
+  width: 100%; /* Занимаем всю ширину меню */
+  align-items: flex-start; /* Выравниваем ссылки по левой стороне */
 }
 
+/* Стили для ссылок */
+.contact-buttons a {
+  text-decoration: none;
+  color: #121212;
+  font-family: 'Albert Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px; /* Уменьшаем размер шрифта для лучшего отображения */
+  line-height: 150%;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center; /* Выравниваем иконки и текст по центру */
+  gap: 10px; /* Отступ между иконкой и текстом */
+}
+
+/* Стили для иконок */
+.contact-buttons a img {
+  width: 40px; /* Уменьшаем размер иконок */
+  height: 40px;
+}
+
+/* Стили для кнопки закрытия */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Кнопка закрытия справа */
+  font-size: 30px;
+  cursor: pointer;
+  transform: scale(1.6);
+  margin: 10px;
+}
+
+/* Стили для кнопки-ссылки */
 .contact-button {
   padding: 10px 20px;
   color: white;
@@ -161,17 +206,42 @@
   background-color: #00a234;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 30px;
-  cursor: pointer;
-  gap: 10px;
-  transform: scale(1.6);
-  margin: 10px;
+/* Медиа-запросы для адаптации */
+@media (max-width: 768px) {
+  .nav-menu {
+    width: 300px; /* Уменьшаем ширину меню для планшетов */
+  }
+
+  .contact-buttons a {
+    font-size: 20px; /* Уменьшаем размер шрифта */
+  }
+
+  .contact-buttons a img {
+    width: 30px; /* Уменьшаем размер иконок */
+    height: 30px;
+  }
 }
 
+@media (max-width: 480px) {
+  .nav-menu {
+    width: 100%; /* Меню занимает всю ширину экрана на мобильных устройствах */
+    padding: 10px; /* Уменьшаем отступы */
+  }
+
+  .contact-buttons a {
+    font-size: 36px; /* Уменьшаем размер шрифта */
+  }
+
+  .contact-buttons a img {
+    width: 25px; /* Уменьшаем размер иконок */
+    height: 25px;
+  }
+
+  .close-button {
+    font-size: 24px; /* Уменьшаем размер кнопки закрытия */
+    transform: scale(1.2);
+  }
+}
 /* Иконка меню */
 .menu-icon {
   width: 35px;

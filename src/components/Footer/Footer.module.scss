@@ -76,6 +76,12 @@
     position: static;
     margin-top: 20px;
     text-decoration: none; /* Убираем подчеркивание */
+    transition: 0.3s all;
+  }
+  .upper__rightButton:hover {
+    transform: scale(1.1);
+    background-color: rgba(1, 200, 71, 0.7);
+    font-size: 24px;
   }
 }
 

@@ -1,6 +1,6 @@
 /* Пятая страница */
 #page-5 {
-  background-color: #F2E3D0;
+  background-color: #f2e3d0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@
   width: 40%;
   font-size: 44px;
   color: #121212;
-  font-family: 'Fugaz One', sans-serif;
+  font-family: "Fugaz One", sans-serif;
 }
 
 .faq-questions {
@@ -30,13 +30,19 @@
 
 .faq-item {
   margin-bottom: 25px;
-  border-bottom: 4px solid #01C847;
+  border-bottom: 4px solid #01c847;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .faq-question {
   font-size: 40px;
   color: #121212;
-  font-family: 'Albert Sans', sans-serif;
+  font-family: "Albert Sans", sans-serif;
   cursor: pointer;
   padding: 10px 0;
   transition: color 0.3s;
@@ -54,12 +60,12 @@
 .faq-answer {
   font-size: 25px;
   color: #121212;
-  font-family: 'Albert Sans', sans-serif;
+  font-family: "Albert Sans", sans-serif;
   padding: 10px 0;
   opacity: 0;
-  max-height: 0; /* Используем max-height вместо height */
+  max-height: 0; /* Начальное состояние: скрыто */
   overflow: hidden;
-  transition: opacity 0.5s ease, max-height 0.5s ease; /* Анимация max-height */
+  transition: opacity 0.5s ease, max-height 0.5s ease; /* Анимация opacity и max-height */
 }
 
 .faq-answer.active {

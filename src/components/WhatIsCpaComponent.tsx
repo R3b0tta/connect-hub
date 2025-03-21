@@ -1,10 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import goldMug from "../assets/images/goldMug.png";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const WhatIsCpaComponent = () => {
   const [clients, setClients] = useState(0);
   const income = clients * 3352;
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    // Анимация при появлении на экране
+    gsap.fromTo(
+      containerRef.current,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%", // Начинаем анимацию, когда 80% компонента видно
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, []);
 
   useEffect(() => {
     if (clients >= 900) {
@@ -35,7 +58,7 @@ export const WhatIsCpaComponent = () => {
   }, [clients]);
 
   return (
-    <div className="page" id="page-2">
+    <div className="page" id="page-2" ref={containerRef}>
       <div className="cpa-container">
         <h2>
           Что такое <span className="cpa-bold">CPA</span>

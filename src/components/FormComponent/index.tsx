@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm as useReactHookForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -21,9 +21,7 @@ const schema = z.object({
   telegram: z.string().regex(/^[A-Za-z0-9_]+$/, "Только латиница и цифры"),
   business: z.string().min(1, "Укажите сферу бизнеса"),
   website: z.string().url("Некорректная ссылка"),
-  consent1: z
-    .boolean()
-    .refine((val) => val, "Вы должны согласиться на получение рассылок"),
+  consent1: z.boolean(),
   consent2: z
     .boolean()
     .refine(
@@ -45,7 +43,7 @@ export const FormComponent = () => {
   });
 
   // Используем useForm из Formspree
-  const [state, formspreeSubmit] = useFormspree("movejdbp");
+  const [state, formspreeSubmit] = useFormspree("xjkyyoaz");
 
   // Следим за текущей выбранной ролью
   const selectedRole = watch("role");
@@ -54,6 +52,12 @@ export const FormComponent = () => {
   const onSubmit = async (data: any) => {
     await formspreeSubmit(data);
   };
+  useEffect(() => {
+    const body: HTMLBodyElement | null = document.querySelector("body");
+    if (body) {
+      body.style.background = "#121212";
+    }
+  }, []);
 
   return (
     <div className={styles.root}>

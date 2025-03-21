@@ -1,181 +1,264 @@
+/* Добавляем box-sizing для всех элементов */
+* {
+  box-sizing: border-box;
+}
+
+.root {
+  width: 100%; /* Изменено для мобильных устройств */
+  max-width: 550px; /* Максимальная ширина для больших экранов */
+  max-height: 100vh;
+  background-color: #F2E3D0;
+  border-radius: 83px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 50px;
+  overflow: hidden; /* Чтобы содержимое не выходило за пределы */
+}
+
+h1 {
+  font-size: 32px; /* Уменьшено для мобильных устройств */
+  margin-bottom: 15px; /* Уменьшено для мобильных устройств */
+  text-align: center;
+  font-weight: normal;
+  color: black;
+}
+
+.inputGroup {
+  margin-bottom: 15px; /* Уменьшено для мобильных устройств */
+  position: relative;
+  width: 100%; /* Убедимся, что контейнер занимает всю ширину */
+}
+
+.inputField {
+  width: 100%; /* Изменено для мобильных устройств */
+  padding: 12px; /* Уменьшено для мобильных устройств */
+  border-radius: 31.5px;
+  border: 1px solid #848D87;
+  margin-top: 10px;
+  background-color: #F2E3D0;
+  color: black;
+  font-size: 16px; /* Уменьшено для мобильных устройств */
+}
+
+.roleSelector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #848D87;
+  border-radius: 31.5px;
+  padding: 10px; /* Уменьшено для мобильных устройств */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%; /* Убедимся, что контейнер занимает всю ширину */
+}
+
+.roleOption {
+  flex: 1;
+  text-align: center;
+  padding: 10px; /* Уменьшено для мобильных устройств */
+  font-size: 16px; /* Уменьшено для мобильных устройств */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 31.5px;
+  transition: transform 0.3s;
+  color: black;
+}
+
+.roleOption.active {
+  background-color: #01C847;
+  color: white;
+}
+
+.roleOption:hover {
+  transform: scale(1.1);
+}
+
+.roleOption.active:hover {
+  background-color: #019c3f;
+}
+
+.separator {
+  width: 1px;
+  height: 100%;
+  background-color: #848D87;
+}
+
+.submitButton {
+  width: 100%;
+  height: 50px;
+  background-color: #01C847;
+  border-radius: 31.5px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  margin: 30px auto;
+  transition: transform 0.3s, font-size 0.3s;
+  border: none;
+  color: white;
+}
+
+.submitButton:hover {
+  transform: translateY(-5px);
+  font-size: 20px; /* Уменьшено для мобильных устройств */
+}
+
+.inputGroup a {
+  color: #01C847;
+  text-decoration: none;
+}
+
+.inputGroup a:hover {
+  text-decoration: underline;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #848D87;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px; /* Добавляем отступ справа */
+  flex-shrink: 0; /* Чтобы чекбокс не сжимался */
+}
+
+.checkbox.checked {
+  background-color: #01C847;
+  border-color: #01C847;
+}
+
+.checkbox.checked::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 6px;
+  height: 12px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.consentText {
+  font-size: 16px; /* Уменьшено для мобильных устройств */
+  color: black;
+  line-height: 25px;
+  margin-left: 0;
+  white-space: normal; /* Разрешим перенос текста */
+}
+
+.consentSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px; /* Уменьшено для мобильных устройств */
+}
+
+.consentSection .checkboxContainer {
+  margin-top: 5px;
+  flex-direction: row;
+  align-items: flex-start; /* Выравниваем по верхнему краю */
+}
+
+.consentTextRight {
+  transform: translateX(-7px);
+}
+
+.consentTextLeft {
+  transform: translateX(-30px);
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Медиа-запросы для адаптации */
+@media (max-width: 768px) {
   .root {
-      width: 550px;
-      background-color: #F2E3D0;
-      border-radius: 83px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      margin-top: 10px;
-    h1 {
-      font-size: 40px;
-      margin-bottom: 20px;
-      text-align: center;
-      font-weight: normal;
-      color: black;
-    }
+    padding: 15px; /* Уменьшено для планшетов */
   }
 
-    .inputGroup {
-      margin-bottom: 20px;
-      position: relative;
-    }
+  h1 {
+    font-size: 28px; /* Уменьшено для планшетов */
+  }
 
+  .inputField {
+    padding: 10px; /* Уменьшено для планшетов */
+    font-size: 14px; /* Уменьшено для планшетов */
+  }
 
-    .inputField {
-      width: 95%;  /* Уменьшаем длину поля ввода до 95% */
-      padding: 15px;
-      border-radius: 31.5px;
-      border: 1px solid #848D87;
-      margin-top: 10px;
-      background-color: #F2E3D0;  /* Цвет фона внутри поля */
-      color: black;
-      font-size: 18px;
-    }
+  .roleSelector {
+    padding: 8px; /* Уменьшено для планшетов */
+  }
 
-    .roleSelector {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #848D87;
-      border-radius: 31.5px;
-      padding: 15px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-    }
+  .roleOption {
+    padding: 8px; /* Уменьшено для планшетов */
+    font-size: 14px; /* Уменьшено для планшетов */
+  }
 
-    .roleOption {
-      flex: 1;
-      text-align: center;
-      padding: 15px;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 31.5px;
-      transition: transform 0.3s;
-      color: black;
-    }
+  .submitButton {
+    font-size: 16px; /* Уменьшено для планшетов */
+  }
 
-    .roleOption.active {
-      background-color: #01C847;
-      color: white;
-    }
+  .submitButton:hover {
+    font-size: 18px; /* Уменьшено для планшетов */
+  }
 
-    .roleOption:hover {
-      transform: scale(1.1);
-    }
+  .consentText {
+    font-size: 14px; /* Уменьшено для планшетов */
+  }
+}
 
-    .roleOption.active:hover {
-      background-color: #019c3f;
-    }
+@media (max-width: 480px) {
+  .root {
+    padding: 10px; /* Уменьшено для мобильных устройств */
+    border-radius: 50px; /* Уменьшено для мобильных устройств */
+    margin-top: 20px;
+  }
 
-    .separator {
-      width: 1px;
-      height: 100%;
-      background-color: #848D87;
-    }
+  h1 {
+    font-size: 24px; /* Уменьшено для мобильных устройств */
+  }
 
-    /* Кнопка отправки */
-    .submitButton {
-      width: 100%;
-      height: 50px;
-      background-color: #01C847;
-      border-radius: 31.5px;
-      font-size: 22px;
-      text-align: center;
-      line-height: 50px;
-      cursor: pointer;
-      margin: 0 auto;
-      color: black;
-      transition: transform 0.3s, font-size 0.3s;
-    }
+  .inputField {
+    padding: 8px; /* Уменьшено для мобильных устройств */
+    font-size: 12px; /* Уменьшено для мобильных устройств */
+  }
 
-    .submitButton:hover {
-      transform: translateY(-5px);
-      font-size: 24px;
-    }
+  .roleSelector {
+    padding: 6px; /* Уменьшено для мобильных устройств */
+  }
 
-    .inputGroup a {
-      color: #01C847;
-      text-decoration: none;
-    }
+  .roleOption {
+    padding: 6px; /* Уменьшено для мобильных устройств */
+    font-size: 12px; /* Уменьшено для мобильных устройств */
+  }
 
-    .inputGroup a:hover {
-      text-decoration: underline;
-    }
+  .submitButton {
+    font-size: 14px; /* Уменьшено для мобильных устройств */
+  }
 
-    /* Для чекбоксов */
-    .checkboxContainer {
-      display: flex;
-      align-items: center;
-      margin-top: 15px;
-      position: relative;
-      width: 100%;
-    }
+  .submitButton:hover {
+    font-size: 16px; /* Уменьшено для мобильных устройств */
+  }
 
-    .checkbox {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #848D87;
-      border-radius: 5px;
-      position: absolute;
-      left: 0;
-      cursor: pointer;
-    }
-
-    .checkbox.checked {
-      background-color: #01C847;
-      border-color: #01C847;
-    }
-
-    .checkbox.checked::after {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 6px;
-      width: 6px;
-      height: 12px;
-      border: solid black;
-      border-width: 0 3px 3px 0;
-      transform: rotate(45deg);
-    }
-
-    .consentText {
-      font-size: 18px;
-      color: black;
-      line-height: 25px;
-      margin-left: 0;
-      white-space: nowrap;
-    }
-
-    .consentSection {
-      display: flex;
-      flex-direction: column;
-      margin-top: 12px;
-    }
-
-    .consentSection .checkboxContainer {
-      margin-top: 5px;
-      flex-direction: row-reverse;
-    }
-
-    /* Сдвиг текста */
-    .consentTextRight {
-      transform: translateX(-7px); /* Сдвиг правее */
-    }
-
-    .consentTextLeft {
-      transform: translateX(-30px); /* Сдвиг текста "Я даю свое согласие на обработку персональных данных" левее */
-    }
-
-    /* Стили для ошибок */
-    .error {
-      border: 1px solid red;
-    }
-
-    .errorMessage {
-      color: red;
-      font-size: 12px;
-      margin-top: 5px;
-    }
+  .consentText {
+    font-size: 12px; /* Уменьшено для мобильных устройств */
+  }
+}
