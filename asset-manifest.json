@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.58bf7bc9.css",
+    "main.js": "/static/js/main.8b1bfa70.js",
+    "static/media/leprekonBoots .png": "/static/media/leprekonBoots .8cabc5ba0f1f2027cd49.png",
+    "static/media/clever.png": "/static/media/clever.7cb26c62f68419dec66e.png",
+    "static/media/tg.svg": "/static/media/tg.d78fbfe6e8707c059f29491c0512498a.svg",
+    "static/media/goldMug.png": "/static/media/goldMug.028568224356a5a2c352.png",
+    "static/media/mail.svg": "/static/media/mail.a30bcfbd0a55c569ff4d0c38675bf49f.svg",
+    "static/media/phone.svg": "/static/media/phone.6130529c094a0f30813c1dccb2a4c05e.svg",
+    "static/media/pipe.png": "/static/media/pipe.8c38cf9c124091fe12b4.png",
+    "static/media/coins.png": "/static/media/coins.4db7041e08a6f5291955.png",
+    "index.html": "/index.html",
+    "main.58bf7bc9.css.map": "/static/css/main.58bf7bc9.css.map",
+    "main.8b1bfa70.js.map": "/static/js/main.8b1bfa70.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58bf7bc9.css",
+    "static/js/main.8b1bfa70.js"
+  ]
+}
