@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/connect-hub/static/css/main.58bf7bc9.css",
-    "main.js": "/connect-hub/static/js/main.08462db1.js",
+    "main.js": "/connect-hub/static/js/main.92e092f9.js",
     "static/media/leprekonBoots .png": "/connect-hub/static/media/leprekonBoots .8cabc5ba0f1f2027cd49.png",
     "static/media/clever.png": "/connect-hub/static/media/clever.7cb26c62f68419dec66e.png",
     "static/media/tg.svg": "/connect-hub/static/media/tg.d78fbfe6e8707c059f29491c0512498a.svg",
@@ -12,10 +12,10 @@
     "static/media/coins.png": "/connect-hub/static/media/coins.4db7041e08a6f5291955.png",
     "index.html": "/connect-hub/index.html",
     "main.58bf7bc9.css.map": "/connect-hub/static/css/main.58bf7bc9.css.map",
-    "main.08462db1.js.map": "/connect-hub/static/js/main.08462db1.js.map"
+    "main.92e092f9.js.map": "/connect-hub/static/js/main.92e092f9.js.map"
   },
   "entrypoints": [
     "static/css/main.58bf7bc9.css",
-    "static/js/main.08462db1.js"
+    "static/js/main.92e092f9.js"
   ]
 }
