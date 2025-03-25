@@ -7,10 +7,11 @@
     height: auto; /* Изменено на auto для адаптивности */
     padding: 20px; /* Уменьшенный отступ */
     padding: 0 140px;
+    min-height: 20vh; /* Изменено на auto для адаптивности */
   }
 
   #page-6 {
-    height: auto; /* Изменено на auto для адаптивности */
+    min-height: 60vh; /* Изменено на auto для адаптивности */
     padding: 20px; /* Уменьшенный отступ */
     padding: 70px 0;
 
@@ -186,7 +187,8 @@
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
   .upper {
-    width: 100%; /* Ширина 100% */
+    width: 100%;
+    padding: 10px;
 
     .upper__leftItem {
       font-size: 14px; /* Уменьшен размер шрифта */

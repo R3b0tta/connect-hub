@@ -41,6 +41,7 @@
   text-align: center;
   margin: -40px 10px;
   z-index: 1;
+  max-width: 60%;
 }
 
 .why-we h3 {
@@ -196,6 +197,9 @@
 
   #page-4 .center-top-text p {
     font-size: 18px;
+  }
+  .why-we {
+    max-width: 100%;
   }
 
   .why-we h3 {

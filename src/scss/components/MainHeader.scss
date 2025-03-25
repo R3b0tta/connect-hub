@@ -1,3 +1,4 @@
+
 /* Стили для шапки */
 .header {
   display: flex;
@@ -6,6 +7,15 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.main-content {
+  display: flex;
+  flex-direction: row;
+}
+.main-right img {
+  width: 100%;
+  max-width: 614px;
+  height: auto;
 }
 
 /* Иконка меню */
@@ -67,10 +77,9 @@
 .content-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   height: 100%;
-  text-align: center;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -78,7 +87,7 @@
 .center-text {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: flex-start;
 }
 
 .text-main {
@@ -96,7 +105,6 @@
 .flip-text {
   font-size: 60px;
   color: #F2E3D0;
-  margin: 20px 0;
 }
 .partner-button {
   width: 395px;
@@ -206,6 +214,9 @@
   background-color: #00a234;
 }
 
+@media (max-width: 1250px) {
+
+}
 /* Медиа-запросы для адаптации */
 @media (max-width: 768px) {
   .nav-menu {

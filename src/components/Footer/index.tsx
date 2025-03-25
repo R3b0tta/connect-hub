@@ -67,7 +67,7 @@ export const Footer = () => {
 
           {/* Правая кнопка "Стать партнером" */}
           <div className={styles.upper__right}>
-            <Link className={styles.upper__rightButton} to="/form">
+            <Link className={styles.upper__rightButton} to="/connect-hub/form">
               Стать партнером
             </Link>
           </div>
