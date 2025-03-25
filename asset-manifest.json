@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/connect-hub/static/css/main.9d5a23f6.css",
-    "main.js": "/connect-hub/static/js/main.745e7429.js",
+    "main.css": "/connect-hub/static/css/main.7de96fae.css",
+    "main.js": "/connect-hub/static/js/main.867eecee.js",
     "static/media/gnom_with_coin.png": "/connect-hub/static/media/gnom_with_coin.8d526510b03bcd383786.png",
     "static/media/leprekonBoots .png": "/connect-hub/static/media/leprekonBoots .8cabc5ba0f1f2027cd49.png",
     "static/media/clever.png": "/connect-hub/static/media/clever.7cb26c62f68419dec66e.png",
@@ -12,11 +12,11 @@
     "static/media/pipe.png": "/connect-hub/static/media/pipe.8c38cf9c124091fe12b4.png",
     "static/media/coins.png": "/connect-hub/static/media/coins.4db7041e08a6f5291955.png",
     "index.html": "/connect-hub/index.html",
-    "main.9d5a23f6.css.map": "/connect-hub/static/css/main.9d5a23f6.css.map",
-    "main.745e7429.js.map": "/connect-hub/static/js/main.745e7429.js.map"
+    "main.7de96fae.css.map": "/connect-hub/static/css/main.7de96fae.css.map",
+    "main.867eecee.js.map": "/connect-hub/static/js/main.867eecee.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d5a23f6.css",
-    "static/js/main.745e7429.js"
+    "static/css/main.7de96fae.css",
+    "static/js/main.867eecee.js"
   ]
 }
