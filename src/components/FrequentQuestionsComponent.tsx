@@ -65,10 +65,10 @@ export const FrequentQuestionsComponent: React.FC = () => {
                   className="arrow"
                   style={{
                     transform:
-                      openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
+                      openIndex === index ? "rotate(90deg)" : "rotate(0deg)",
                   }}
                 >
-                  ▼
+                  ➔
                 </span>
               </div>
               <div

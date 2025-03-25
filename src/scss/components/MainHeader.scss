@@ -14,7 +14,7 @@
 }
 .main-right img {
   width: 100%;
-  max-width: 614px;
+  max-width: 620px;
   height: auto;
 }
 .main-left {
@@ -62,7 +62,6 @@
 
 .contact-button {
   font-size: 22px;
-  font-family: 'Albert Sans', sans-serif;
   background-color: #01C847;
   color: #121212;
   padding: 15px 30px;
@@ -137,74 +136,125 @@
 /* Стиль для навигационного меню */
 /* Основные стили для меню */
 .nav-menu {
+  font-family: "Albert Sans", sans-serif;
+  font-weight: 400;
   position: fixed;
   top: 0;
-  right: 0; /* Меню выезжает справа */
-  width: 400px;
+  right: 0;
+  width: 450px; /* Немного шире для удобства */
   height: 100vh;
   background-color: #F2E3D0;
   color: #121212;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Выравниваем содержимое по левой стороне */
-  justify-content: center;
-  transform: translateX(100%); /* Меню начинается за пределами экрана справа */
-  transition: transform 0.6s ease-in-out; /* Плавная анимация */
-  z-index: 999;
-  padding: 20px; /* Добавляем отступы */
+  padding: 40px;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  z-index: 1000;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 /* Когда меню открыто, оно плавно выезжает */
 .nav-menu.visible {
-  transform: translateX(0); /* Меню появляется */
+  transform: translateX(0);
+  opacity: 1;
 }
 
 /* Отключаем прокрутку страницы, когда меню открыто */
 .menu-open {
   overflow: hidden;
-}
+  position: fixed; /* Фиксирует body на месте */
+  width: 100%;}
 
 /* Стили для контейнера ссылок */
 .contact-buttons {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%; /* Занимаем всю ширину меню */
-  align-items: flex-start; /* Выравниваем ссылки по левой стороне */
+  gap: 25px;
+  margin: 30vh 0;
+  width: 100%;
 }
-
-/* Стили для ссылок */
-.contact-buttons a {
-  text-decoration: none;
-  color: #121212;
-  font-family: 'Albert Sans', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px; /* Уменьшаем размер шрифта для лучшего отображения */
-  line-height: 150%;
-  letter-spacing: 0.01em;
+.contact-buttons-contacts {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+.contact-buttons-nav {
   display: flex;
-  align-items: center; /* Выравниваем иконки и текст по центру */
-  gap: 10px; /* Отступ между иконкой и текстом */
+  flex-direction: column;
+  text-align: center;
+  font-size: 25px;
+  a {
+    text-decoration: none;
+    color: inherit;
+    margin: 10px;
+  }
 }
 
-/* Стили для иконок */
-.contact-buttons a img {
-  width: 40px; /* Уменьшаем размер иконок */
-  height: 40px;
+.contact-buttons-contacts a {
+  font-size: 18px !important;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  img {
+    width: 24px;
+    height: 24px;
+  }
 }
+.contact-buttons-contacts a span {
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.contact-buttons-contacts a:hover span {
+  color: #01C847;
+}
+.contact-buttons a:hover {
+  color: #01C847;
+  transform: translateX(5px);
+}
+
+.contact-buttons a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #01C847;
+  transition: width 0.3s ease;
+}
+
+.contact-buttons a:hover::after {
+  width: 100%;
+}
+
 
 /* Стили для кнопки закрытия */
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px; /* Кнопка закрытия справа */
-  font-size: 30px;
+  top: 25px;
+  right: 25px;
+  font-size: 36px;
+  line-height: 1;
   cursor: pointer;
-  transform: scale(1.6);
-  margin: 10px;
+  color: #121212;
+  transition: transform 0.2s;
+  background: none;
+  border: none;
+  padding: 10px;
 }
 
+.close-button:hover {
+  transform: scale(1.2);
+  color: #01C847;
+}
 /* Стили для кнопки-ссылки */
 .contact-button {
   padding: 10px 20px;
@@ -230,14 +280,23 @@
 /* Медиа-запросы для адаптации */
 @media (max-width: 768px) {
   .nav-menu {
-    width: 300px; /* Уменьшаем ширину меню для планшетов */
+    width: 100vw;
+    padding: 30px;
   }
-
-
   .contact-buttons a {
-    font-size: 20px; /* Уменьшаем размер шрифта */
+    font-size: 24px;
   }
-
+  .contact-buttons-nav a {
+    font-size: 36px !important;
+  }
+  .contact-buttons-contacts a {
+    font-size: 16px !important;
+  }
+  .close-button {
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+  }
   .contact-buttons a img {
     width: 30px; /* Уменьшаем размер иконок */
     height: 30px;
@@ -246,14 +305,14 @@
 
 @media (max-width: 480px) {
   .nav-menu {
-    width: 100%; /* Меню занимает всю ширину экрана на мобильных устройствах */
-    padding: 10px; /* Уменьшаем отступы */
+    width: 100vw; /* Четко на всю ширину экрана */
+    padding: 25px;
   }
-  .partner-button {
-    margin-top: 20vh;
+  .partner-button-container {
+    padding-top: 20vh;
   }
   .contact-buttons a {
-    font-size: 36px; /* Уменьшаем размер шрифта */
+    font-size: 22px;
   }
 
   .contact-buttons a img {
@@ -283,10 +342,7 @@
   border-radius: 5px;
 }
 
-/* Для body, когда меню открыто */
-.menu-open .nav-menu {
-  transform: translateX(0); /* Когда тело содержит класс menu-open, меню открыто */
-}
+
 
 @media (max-width: 600px) {
   .text-main,
@@ -298,13 +354,6 @@
     width: 375px;
     height: 68px;
   }
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-  }
 }
 @media (max-width: 400px) {
   .text-main,
@@ -315,5 +364,11 @@
   .partner-button {
     width: 345px;
     height: 68px;
+  }
+  .contact-buttons-nav a {
+    font-size: 20px !important;
+  }
+  .partner-button-container {
+    padding-top: 5vh;
   }
 }

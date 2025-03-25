@@ -78,9 +78,11 @@ export const MainHeader: React.FC = () => {
                 </span>
               </p>
             </div>
-            <Link to="/connect-hub/form" className="partner-button">
-              Стать партнером
-            </Link>
+            <div className="partner-button-container">
+              <Link to="/connect-hub/form" className="partner-button">
+                Стать партнером
+              </Link>
+            </div>
           </div>
         </div>
         <div className="main-right">
@@ -94,40 +96,45 @@ export const MainHeader: React.FC = () => {
         id="nav-menu"
         onMouseLeave={handleMouseLeave}
       >
-        <div className="close-button" onClick={handleMouseLeave}>
+        <div
+          className="close-button"
+          onClick={handleMouseLeave}
+          style={{ fontSize: "50px", padding: "10px" }}
+        >
           &times;
         </div>
         <div className="contact-buttons">
-          <a onClick={handleMouseLeave} href="#page-1">
-            Главная
-          </a>
-          <a onClick={handleMouseLeave} href="#page-2">
-            Веб-мастерам
-          </a>
-          <a onClick={handleMouseLeave} href="#page-3">
-            Партнерам
-          </a>
-          <a onClick={handleMouseLeave} href="#page-5">
-            FAQ
-          </a>
-          <a onClick={handleMouseLeave} href="#page-6">
-            О нас
-          </a>
-          <a onClick={handleMouseLeave} href="#page-6">
-            Контакты:
-          </a>
-          <a onClick={handleMouseLeave} href="https://t.me/tgid033">
-            <img src={tg} alt="tg-icon" />
-            <span>tgid033</span>
-          </a>{" "}
-          <a href="mailto:info@connect-hub.ru">
-            <img src={mail} alt="tg-icon" />
-            <span>info@connect-hub.ru</span>
-          </a>{" "}
-          <a>
-            <img src={phone} alt="tg-icon" />
-            <span>+7 (901)-802 74 00</span>
-          </a>
+          <div className="contact-buttons-nav">
+            <a onClick={handleMouseLeave} href="#page-1">
+              Главная
+            </a>
+            <a onClick={handleMouseLeave} href="#page-2">
+              Веб-мастерам
+            </a>
+            <a onClick={handleMouseLeave} href="#page-3">
+              Партнерам
+            </a>
+            <a onClick={handleMouseLeave} href="#page-5">
+              FAQ
+            </a>
+            <a onClick={handleMouseLeave} href="#page-6">
+              О нас
+            </a>
+          </div>
+          <div className="contact-buttons-contacts">
+            <a onClick={handleMouseLeave} href="https://t.me/tgid033">
+              <img src={tg} alt="tg" />
+              <span>Telegram</span>
+            </a>
+            <a href="mailto:info@connect-hub.ru">
+              <img src={mail} alt="mail" />
+              <span>Почта</span>
+            </a>{" "}
+            <a>
+              <img src={phone} alt="phone" />
+              <span>+7 (901) - 802 74 00</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
