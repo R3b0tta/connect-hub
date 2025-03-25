@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm as useReactHookForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm as useFormspree, ValidationError } from "@formspree/react";
 import styles from "./FormComponent.module.scss";
+import ReCAPTCHA from "react-google-recaptcha";
 
 // Схема валидации через Zod
 const schema = z.object({
@@ -31,32 +32,52 @@ const schema = z.object({
 });
 
 export const FormComponent = () => {
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
     watch,
+    reset,
   } = useReactHookForm({
     resolver: zodResolver(schema),
     defaultValues: { role: "webmaster" },
   });
 
-  // Используем useForm из Formspree
   const [state, formspreeSubmit] = useFormspree("xjkyyoaz");
 
-  // Следим за текущей выбранной ролью
   const selectedRole = watch("role");
+
+  // Обработчик успешного прохождения капчи
+  function onChangeCaptcha(token: string | null) {
+    setCaptchaToken(token);
+  }
 
   // Обработчик отправки формы
   const onSubmit = async (data: any) => {
-    await formspreeSubmit(data);
-  };
-  useEffect(() => {
-    const body: HTMLBodyElement | null = document.querySelector("body");
-    if (body) {
-      body.style.background = "#121212";
+    if (!captchaToken) {
+      alert("Пройдите капчу!");
+      return;
     }
+
+    const formData = { ...data, captchaToken }; // Добавляем токен капчи
+    try {
+      await formspreeSubmit(formData);
+      alert("Форма успешно отправлена");
+      reset();
+    } catch (err) {
+      alert("Ошибка в отправке формы");
+    }
+
+    setCaptchaToken(null); // Очищаем капчу после отправки
+  };
+
+  useEffect(() => {
+    document.body.style.background = "#121212";
+    return () => {
+      document.body.style.background = "";
+    };
   }, []);
 
   return (
@@ -200,6 +221,12 @@ export const FormComponent = () => {
             <div className={styles.errorMessage}>{errors.consent2.message}</div>
           )}
         </div>
+
+        {/* Капча */}
+        <ReCAPTCHA
+          sitekey="6LeSb_8qAAAAAJQGKFNt1DNf2KKlTrrSqe-Z6iVK"
+          onChange={onChangeCaptcha}
+        />
 
         {/* Кнопка отправки */}
         <button

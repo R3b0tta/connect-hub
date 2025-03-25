@@ -17,6 +17,10 @@
   max-width: 614px;
   height: auto;
 }
+.main-left {
+  z-index: 1;
+  padding: 20px;
+}
 
 /* Иконка меню */
 .menu-icon {
@@ -214,14 +218,21 @@
   background-color: #00a234;
 }
 
-@media (max-width: 1250px) {
-
+@media (max-width: 1000px) {
+  .main-right img {
+    position: absolute;
+    left: 0;
+    z-index: 0;
+    opacity: 0.3;
+    margin: auto;
+  }
 }
 /* Медиа-запросы для адаптации */
 @media (max-width: 768px) {
   .nav-menu {
     width: 300px; /* Уменьшаем ширину меню для планшетов */
   }
+
 
   .contact-buttons a {
     font-size: 20px; /* Уменьшаем размер шрифта */
@@ -238,7 +249,9 @@
     width: 100%; /* Меню занимает всю ширину экрана на мобильных устройствах */
     padding: 10px; /* Уменьшаем отступы */
   }
-
+  .partner-button {
+    margin-top: 20vh;
+  }
   .contact-buttons a {
     font-size: 36px; /* Уменьшаем размер шрифта */
   }
@@ -279,11 +292,11 @@
   .text-main,
   .text-highlight,
   .flip-text {
-    font-size: 40px;
+    font-size: 55px;
   }
   .partner-button {
-    width: 295px;
-    height: 48px;
+    width: 375px;
+    height: 68px;
   }
   .nav-menu {
     position: fixed;
@@ -291,5 +304,16 @@
     right: 0;
     width: 100vw;
     height: 100vh;
+  }
+}
+@media (max-width: 400px) {
+  .text-main,
+  .text-highlight,
+  .flip-text {
+    font-size: 45px;
+  }
+  .partner-button {
+    width: 345px;
+    height: 68px;
   }
 }
