@@ -11,7 +11,7 @@
   }
 
   #page-6 {
-    min-height: 60vh; /* Изменено на auto для адаптивности */
+    min-height: 80vh; /* Изменено на auto для адаптивности */
     padding: 20px; /* Уменьшенный отступ */
     padding: 70px 0;
 
@@ -123,7 +123,7 @@
     font-style: normal;
     font-weight: 800;
     font-size: 24px; /* Уменьшен размер шрифта */
-    line-height: 150%;
+    line-height: 100%;
     letter-spacing: 0.01em;
     color: #01C847;
   }
@@ -165,7 +165,6 @@
   }
 
   .footer {
-    flex-direction: column; /* Вертикальное расположение */
     align-items: center; /* Центрирование */
     text-align: center; /* Выравнивание текста по центру */
 
@@ -199,10 +198,13 @@
       width: 200px; /* Уменьшена ширина */
       height: 60px; /* Уменьшена высота */
       font-size: 18px; /* Уменьшен размер шрифта */
+      margin-top: 0;
     }
   }
 
   .footer {
+    flex-direction: column; /* Вертикальное расположение */
+    overflow-y: auto; /* Горизонтальная прокрутка */
     .footer__logo {
       font-size: 28px; /* Уменьшен размер шрифта */
     }
@@ -215,6 +217,61 @@
     .footer__contactsItem,
     .footer__navItem {
       font-size: 12px; /* Уменьшен размер шрифта */
+    }
+  }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+  .footer {
+    padding: 10px 0;
+    max-height: 70vh; /* Ограничиваем высоту */
+    overflow-y: auto; /* Включаем вертикальный скролл при необходимости */
+
+    .footer__logo {
+      font-size: 24px !important; /* Еще уменьшаем лого */
+      margin-bottom: 10px;
+    }
+
+    .footer__nav,
+    .footer__contacts {
+      padding: 0 15px; /* Добавляем боковые отступы */
+    }
+
+    .footer__contactsTitle,
+    .footer__navTitle {
+      font-size: 16px !important; /* Уменьшаем заголовки */
+      margin: 0;
+    }
+
+    .footer__contactsItem,
+    .footer__navItem {
+      font-size: 11px !important; /* Минимальный читаемый размер */
+      margin: 6px 0;
+      line-height: 130%; /* Уменьшаем межстрочный интервал */
+    }
+  }
+
+  .upper {
+    .upper__leftItem {
+      p {
+        font-size: 11px; /* Синхронизируем с размером текста в футере */
+      }
+      img {
+        width: 45px; /* Уменьшаем иконки */
+      }
+    }
+  }
+
+  :global {
+    #page-7 {
+      padding: 15px 10px !important;
+      min-height: 35vh; /* Чуть уменьшаем минимальную высоту */
+    }
+
+    #page-6 {
+      min-height: 65vh;
+      padding: 30px 10px !important;
     }
   }
 }

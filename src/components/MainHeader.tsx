@@ -22,17 +22,6 @@ export const MainHeader: React.FC = () => {
     { text: "YouTube", color: "#C4302B" },
   ];
 
-  // Обработчик для открытия меню
-  const handleMenuHover = (): void => {
-    setMenuVisible(true);
-    document.body.classList.add("menu-open");
-  };
-
-  // Обработчик для закрытия меню
-  const handleMouseLeave = (): void => {
-    setMenuVisible(false);
-    document.body.classList.remove("menu-open");
-  };
   // Смена текста в "или блог"
   useEffect(() => {
     if (menuVisible) {
@@ -52,15 +41,6 @@ export const MainHeader: React.FC = () => {
       <div className="header">
         <div className="connect-hub">
           <h1>Connect-Hub</h1>
-        </div>
-        <div
-          className="menu-icon"
-          id="menu-icon"
-          onMouseEnter={handleMenuHover}
-        >
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
         </div>
       </div>
       <div className="main-content">
@@ -87,54 +67,6 @@ export const MainHeader: React.FC = () => {
         </div>
         <div className="main-right">
           <img src={gnomWithCoin} alt="gnom_with_coin" />
-        </div>
-      </div>
-
-      {/* Меню */}
-      <div
-        className={`nav-menu ${menuVisible ? "visible" : ""}`}
-        id="nav-menu"
-        onMouseLeave={handleMouseLeave}
-      >
-        <div
-          className="close-button"
-          onClick={handleMouseLeave}
-          style={{ fontSize: "50px", padding: "10px" }}
-        >
-          &times;
-        </div>
-        <div className="contact-buttons">
-          <div className="contact-buttons-nav">
-            <a onClick={handleMouseLeave} href="#page-1">
-              Главная
-            </a>
-            <a onClick={handleMouseLeave} href="#page-2">
-              Веб-мастерам
-            </a>
-            <a onClick={handleMouseLeave} href="#page-3">
-              Партнерам
-            </a>
-            <a onClick={handleMouseLeave} href="#page-5">
-              FAQ
-            </a>
-            <a onClick={handleMouseLeave} href="#page-6">
-              О нас
-            </a>
-          </div>
-          <div className="contact-buttons-contacts">
-            <a onClick={handleMouseLeave} href="https://t.me/tgid033">
-              <img src={tg} alt="tg" />
-              <span>Telegram</span>
-            </a>
-            <a href="mailto:info@connect-hub.ru">
-              <img src={mail} alt="mail" />
-              <span>Почта</span>
-            </a>{" "}
-            <a>
-              <img src={phone} alt="phone" />
-              <span>+7 (901) - 802 74 00</span>
-            </a>
-          </div>
         </div>
       </div>
     </div>

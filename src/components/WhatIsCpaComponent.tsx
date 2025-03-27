@@ -17,80 +17,33 @@ export const WhatIsCpaComponent: React.FC = () => {
   const incomeRef = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !h2Ref.current || !calculatorRef.current)
+      return;
 
-    gsap.fromTo(
+    const paragraphs = pRefs.current.filter((p) => p !== null);
+    const allElements = [
       containerRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
+      h2Ref.current,
+      ...paragraphs,
+      calculatorRef.current,
+    ];
+
+    gsap.set(allElements, { opacity: 0, y: 50 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
       },
-    );
-
-    if (h2Ref.current) {
-      gsap.fromTo(
-        h2Ref.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: h2Ref.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        },
-      );
-    }
-
-    pRefs.current.forEach((p, index) => {
-      if (p) {
-        gsap.fromTo(
-          p,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            delay: index * 0.2,
-            scrollTrigger: {
-              trigger: p,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          },
-        );
-      }
     });
 
-    if (calculatorRef.current) {
-      gsap.fromTo(
-        calculatorRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: calculatorRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        },
-      );
-    }
+    tl.to(allElements, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+    });
   }, []);
 
   const handleClientsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +51,7 @@ export const WhatIsCpaComponent: React.FC = () => {
     setClients(value);
 
     if (mugRef.current) {
-      const scale = 1 + (value / 5000) * 0.5; // Теперь увеличивается до 2x
+      const scale = 1 + (value / 5000) * 0.3;
       gsap.to(mugRef.current, {
         scale: scale,
         duration: 0.3,
@@ -121,23 +74,20 @@ export const WhatIsCpaComponent: React.FC = () => {
         <h2 ref={h2Ref}>
           Что такое <span className="cpa-bold">CPA</span>
         </h2>
-        <p
-          className="center-align"
-          ref={(el) => {
-            if (el) pRefs.current[0] = el;
-          }}
-        >
-          <b>Веб-мастер</b> размещает у себя рекламные предложения и получает
-          деньги за действия пользователей
-        </p>
-        <p
-          className="center-align"
-          ref={(el) => {
-            if (el) pRefs.current[1] = el;
-          }}
-        >
-          <b>Бизнес</b> получает дополнительный трафик и дополнительные продажи
-        </p>
+        {[
+          "Веб-мастер размещает у себя рекламные предложения и получает деньги за действия пользователей.",
+          "Бизнес получает дополнительный трафик и дополнительные продажи.",
+        ].map((text, index) => (
+          <p
+            className="center-align"
+            key={index}
+            ref={(el) => {
+              if (el) pRefs.current[index] = el;
+            }}
+          >
+            <b>{index === 0 ? "Веб-мастер" : "Бизнес"}</b> {text}
+          </p>
+        ))}
       </div>
 
       <div className="calculator-container" ref={calculatorRef}>

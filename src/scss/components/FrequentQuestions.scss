@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 30px;
-  min-height: 130vh; /* Минимальная высота для растягивания */
+  min-height: 100vh; /* Минимальная высота для растягивания */
   box-sizing: border-box; /* Учитываем padding в высоте */
 }
 
@@ -76,7 +76,7 @@
 /* Адаптация для планшетов */
 @media (max-width: 1024px) {
   .faq-container {
-    gap: 100px;
+    gap: 50px;
   }
 
   .faq-title {
@@ -104,7 +104,7 @@
 
   .faq-container {
     flex-direction: column;
-    gap: 50px;
+    gap: 10px;
   }
 
   .faq-title {
@@ -124,20 +124,23 @@
   .faq-answer {
     font-size: 18px;
   }
+  .faq-item {
+    margin-bottom: 10px;
+  }
 }
 
 /* Адаптация для очень маленьких экранов */
 @media (max-width: 480px) {
   .faq-title {
-    font-size: 28px;
+    font-size: 18px;
   }
 
   .faq-question {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .faq-question .arrow {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .faq-answer {

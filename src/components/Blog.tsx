@@ -12,59 +12,32 @@ export const Blog: React.FC = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Анимация появления секции
-    gsap.fromTo(
-      containerRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",
+        toggleActions: "play none none none",
       },
-    );
-
-    // Анимация карточек
-    columnsRef.current.forEach((column, index) => {
-      gsap.fromTo(
-        column,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: index * 0.2,
-          scrollTrigger: {
-            trigger: column,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        },
-      );
     });
 
-    // Анимация изображения
-    gsap.fromTo(
-      ".bottom-image img",
-      { opacity: 0, scale: 0.8 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".bottom-image",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      },
-    );
+    // Анимация появления секции и всех элементов
+    tl.fromTo(
+      containerRef.current,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+    )
+      .fromTo(
+        columnsRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", stagger: 0 },
+        "-=0.8", // Синхронизация с появлением секции
+      )
+      .fromTo(
+        ".bottom-image img",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 1, ease: "power2.out" },
+        "-=0.8", // Синхронизация с колонками
+      );
   }, []);
 
   return (
