@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import tg from "../assets/images/tg.svg";
-import phone from "../assets/images/phone.svg";
-import mail from "../assets/images/mail.svg";
+
 import gnomWithCoin from "../assets/images/gnom_with_coin.png";
 
 interface Phrase {
@@ -48,11 +46,9 @@ export const MainHeader: React.FC = () => {
           <div className="content-container">
             <div className="center-text" id="text-container">
               <p className="text-main">Монетизируйте ваше</p>
-              <p className="text-highlight">творчество</p>
-            </div>
-            <div className="flip-text">
-              <p id="flip-text-content">
-                <span style={{ color: "#F2E3D0" }}>или</span>{" "}
+              <p className="text-highlight">
+                творчество
+                <span style={{ color: "#F2E3D0" }}> или</span>{" "}
                 <span style={{ color: phrases[currentIndex].color }}>
                   {phrases[currentIndex].text}
                 </span>

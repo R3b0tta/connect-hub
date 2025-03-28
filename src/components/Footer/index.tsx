@@ -90,21 +90,6 @@ export const Footer = () => {
               Техподдержка: suport@connect-hub.ru <br />
               Ваши предложения: Info@connect-hub.ru
             </div>
-            <div className={styles.footer__contactsItem}>
-              Telegram: @partner_connect_hub
-            </div>
-          </div>
-
-          {/* Навигация */}
-          <div className={styles.footer__nav}>
-            <div className={styles.footer__navTitle}>Навигация</div>
-            <div className={styles.footer__navItem}>
-              <a href="#page-1">Главная</a>
-              <a href="#page-2">Веб-мастерам</a>
-              <a href="#page-3">Партнерам</a>
-              <a href="#page-5">FAQ</a>
-              <a href="#page-6">Как начать работать</a>
-            </div>
           </div>
         </div>
       </div>

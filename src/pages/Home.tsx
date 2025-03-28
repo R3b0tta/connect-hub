@@ -9,7 +9,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export const Home: React.FC = () => {
   const [index, setIndex] = useState(0);
-  const isScrolling = useRef(false); // Теперь это ref, а не state
+  const [isMobile, setIsMobile] = useState(false);
+  const isScrolling = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const pages = [
     <MainHeader key="header" />,
@@ -20,70 +22,73 @@ export const Home: React.FC = () => {
     <Footer key="footer" />,
   ];
 
-  const changeSlide = (direction: "up" | "down") => {
-    if (isScrolling.current) return; // Проверяем ref
-    isScrolling.current = true; // Блокируем
-
-    setIndex((prev) => {
-      if (direction === "up") return Math.min(prev + 1, pages.length - 1);
-      if (direction === "down") return Math.max(prev - 1, 0);
-      return prev;
-    });
-
-    setTimeout(() => {
-      isScrolling.current = false; // Разблокируем через 800 мс
-    }, 800);
-  };
-
+  // Определение мобильного устройства
   useEffect(() => {
-    const disableScroll = () => {
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    const enableScroll = () => {
-      document.body.style.overflow = "auto";
-      document.documentElement.style.overflow = "auto";
-    };
-
-    disableScroll();
-    return () => enableScroll();
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Управление скроллом для десктопа
   useEffect(() => {
-    let timeout: NodeJS.Timeout; // Храним таймер для debounce
+    if (isMobile) {
+      document.body.style.overflow = "auto";
+      return;
+    }
 
-    const handleWheel = (event: WheelEvent) => {
+    document.body.style.overflow = "hidden";
+
+    const handleWheel = (e: WheelEvent) => {
       if (isScrolling.current) return;
 
-      clearTimeout(timeout); // Очищаем прошлый таймер
-      timeout = setTimeout(() => {
-        if (event.deltaY > 0) changeSlide("up");
-        if (event.deltaY < 0) changeSlide("down");
-      }, 100); // 100 мс задержка, чтобы избежать двойных вызовов
+      isScrolling.current = true;
+      if (e.deltaY > 0) {
+        setIndex((prev) => Math.min(prev + 1, pages.length - 1));
+      } else {
+        setIndex((prev) => Math.max(prev - 1, 0));
+      }
+
+      setTimeout(() => {
+        isScrolling.current = false;
+      }, 1000);
     };
 
     window.addEventListener("wheel", handleWheel);
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      clearTimeout(timeout);
-    };
-  }, []);
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, [isMobile, pages.length]);
 
+  // Режим мобильного устройства - обычная прокрутка
+  if (isMobile) {
+    return (
+      <div ref={containerRef}>
+        {pages.map((page, i) => (
+          <div key={i}>{page}</div>
+        ))}
+      </div>
+    );
+  }
+
+  // Режим десктопа - слайдер с анимациями
   return (
-    <>
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -100 }}
-          transition={{ duration: 0.5 }}
-          className="page"
-        >
-          {pages[index]}
-        </motion.div>
-      </AnimatePresence>
-    </>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          height: "100vh",
+          width: "100vw",
+          overflow: "hidden",
+        }}
+      >
+        {pages[index]}
+      </motion.div>
+    </AnimatePresence>
   );
 };

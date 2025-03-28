@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: center;
   padding: 30px;
-  min-height: 100vh; /* Минимальная высота для растягивания */
-  box-sizing: border-box; /* Учитываем padding в высоте */
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .faq-container {
@@ -22,6 +22,11 @@
   font-size: 44px;
   color: #121212;
   font-family: "Fugaz One", sans-serif;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-title:hover {
+  transform: translateX(5px);
 }
 
 .faq-questions {
@@ -32,11 +37,14 @@
   margin-bottom: 25px;
   border-bottom: 4px solid #01c847;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
 }
 
 .faq-item:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  border-bottom-color: #00a53a;
 }
 
 .faq-question {
@@ -45,32 +53,42 @@
   font-family: "Albert Sans", sans-serif;
   cursor: pointer;
   padding: 10px 0;
-  transition: color 0.3s;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+
+
 .faq-question .arrow {
   font-size: 40px;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.faq-question.active .arrow {
+  transform: rotate(180deg);
 }
 
 .faq-answer {
   font-size: 25px;
   color: #121212;
   font-family: "Albert Sans", sans-serif;
-  padding: 10px 0;
+  padding: 0;
   opacity: 0;
-  max-height: 0; /* Начальное состояние: скрыто */
+  max-height: 0;
   overflow: hidden;
-  transition: opacity 0.5s ease, max-height 0.5s ease; /* Анимация opacity и max-height */
+  transition: opacity 0.5s ease-out, max-height 0.8s ease-out, padding 0.5s ease-out;
+  will-change: max-height, opacity, padding;
 }
 
 .faq-answer.active {
   opacity: 1;
-  max-height: 500px; /* Максимальная высота для анимации */
+  max-height: 500px;
+  padding: 10px 0 20px 0;
+  transition: opacity 0.5s ease-in, max-height 0.8s ease-in, padding 0.5s ease-in;
 }
 
 /* Адаптация для планшетов */
@@ -124,6 +142,7 @@
   .faq-answer {
     font-size: 18px;
   }
+
   .faq-item {
     margin-bottom: 10px;
   }

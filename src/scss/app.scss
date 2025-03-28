@@ -20,6 +20,7 @@ body {
   transition: background 0.3s;
   user-select: none;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body.menu-open {

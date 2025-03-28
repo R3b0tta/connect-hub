@@ -50,6 +50,9 @@ export const WhatIsCpaComponent: React.FC = () => {
     const value = parseInt(e.target.value);
     setClients(value);
 
+    const percentage = (value / 5000) * 100 + "%";
+    e.target.style.setProperty("--progress", percentage);
+
     if (mugRef.current) {
       const scale = 1 + (value / 5000) * 0.3;
       gsap.to(mugRef.current, {
