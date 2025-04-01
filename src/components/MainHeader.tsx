@@ -55,7 +55,7 @@ export const MainHeader: React.FC = () => {
               </p>
             </div>
             <div className="partner-button-container">
-              <Link to="/connect-hub/form" className="partner-button">
+              <Link to="/form" className="partner-button">
                 Стать партнером
               </Link>
             </div>

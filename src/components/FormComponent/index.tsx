@@ -224,7 +224,7 @@ export const FormComponent = () => {
 
         {/* Капча */}
         <ReCAPTCHA
-          sitekey="6LeSb_8qAAAAAJQGKFNt1DNf2KKlTrrSqe-Z6iVK"
+          sitekey="6LcKmAYrAAAAAGzPkjoOsjvx-LN_19XjUpjPkzEb"
           onChange={onChangeCaptcha}
         />
 
